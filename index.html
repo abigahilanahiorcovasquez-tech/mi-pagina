@@ -1,47 +1,84 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi galaxia para ti</title>
+  <title>Para Miguel 💖</title>
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: black;
+      padding: 0;
+      font-family: "Georgia", serif;
+      background: linear-gradient(135deg, #00c853, #2196f3);
       overflow: hidden;
       color: white;
-      font-family: 'Trebuchet MS', sans-serif;
       text-align: center;
     }
 
     h1 {
-      font-size: 3em;
-      animation: glow 2s infinite alternate;
+      margin-top: 20%;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 5px #000;
     }
 
-    p {
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 15px;
+      background: #ff4081;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .frase {
       font-size: 1.5em;
-      margin-top: 10px;
+      margin: 20px;
+      opacity: 0;
+      transition: opacity 1.5s;
     }
 
-    /* Fondo de estrellas */
-    .stars {
+    .frase.show {
+      opacity: 1;
+    }
+
+    .carrito, .corazon, .estrella {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background: url("https://i.ibb.co/4W2DGKm/stars.png") repeat;
-      z-index: -1;
-      animation: moveStars 200s linear infinite;
+      font-size: 2em;
+      animation: flotar 5s linear infinite;
     }
 
-    @keyframes moveStars {
-      from { background-position: 0 0; }
-      to { background-position: -10000px 5000px; }
+    @keyframes flotar {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #fff; }
-      to { text-shadow: 0 0
+    .fondo {
+      position: absolute;
+      font-size: 2em;
+      color: rgba(255,255,255,0.1);
+      animation: flotar 10s linear infinite;
+    }
+
+    iframe {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💖 Para Miguel 💖</h1>
+  <button id="startBtn">Abrir sorpresa 🎁</button>
+
+  <div id="contenido" class="hidden">
+    <p class="frase">Y cuando vi tu sonrisa lo supe, esa era la sonrisa que quería ver siempre al despertar durante el resto de mi vida.</p>
+    <p class="frase">Te quiero para volvernos locos de risa, ebrios de nada y pasear por las calles, eso sí, tomados de la mano, mejor dicho, del corazón.</p>
+    <p class="frase">Cinco minutos bastan
