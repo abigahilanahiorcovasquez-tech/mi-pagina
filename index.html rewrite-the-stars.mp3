@@ -20,85 +20,66 @@
       text-shadow: 2px 2px 5px #000;
     }
 
-    button {
-      padding: 15px 30px;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 15px;
-      background: #ff4081;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
-    }
-    button:hover {
-      transform: scale(1.1);
-    }
-
-    .hidden {
-      display: none;
-    }
-
     .frase {
       font-size: 1.5em;
       margin: 20px;
       opacity: 0;
-      transition: opacity 1.5s;
+      transition: opacity 1s;
     }
 
     .frase.show {
       opacity: 1;
     }
 
-    .carrito, .corazon, .estrella {
+    .flotante {
       position: absolute;
       font-size: 2em;
-      animation: flotar 5s linear infinite;
+      color: rgba(255,255,255,0.8);
+      animation: flotar 7s linear infinite;
     }
 
     @keyframes flotar {
       from { transform: translateY(100vh); opacity: 1; }
       to { transform: translateY(-10vh); opacity: 0; }
     }
-
-    .fondo {
-      position: absolute;
-      font-size: 2em;
-      color: rgba(255,255,255,0.1);
-      animation: flotar 10s linear infinite;
-    }
-
-    iframe {
-      display: none;
-    }
   </style>
 </head>
 <body>
 
   <h1>💖 Para Miguel 💖</h1>
-  <button id="startBtn">Abrir sorpresa 🎁</button>
 
-  <div id="contenido" class="hidden">
+  <div id="contenido">
     <p class="frase">Y cuando vi tu sonrisa lo supe, esa era la sonrisa que quería ver siempre al despertar durante el resto de mi vida.</p>
     <p class="frase">Te quiero para volvernos locos de risa, ebrios de nada y pasear por las calles, eso sí, tomados de la mano, mejor dicho, del corazón.</p>
     <p class="frase">Cinco minutos bastan para que tu amor me haga sonreír como nunca.</p>
+    <p class="frase">Cada instante contigo es un regalo que quiero guardar en mi corazón.</p>
+    <p class="frase">Contigo, cada día es una aventura llena de risas y amor.</p>
   </div>
 
+  <!-- Elementos flotantes -->
+  <span class="flotante" style="left:10%; animation-duration:6s;">❤️</span>
+  <span class="flotante" style="left:30%; animation-duration:8s;">⭐</span>
+  <span class="flotante" style="left:50%; animation-duration:7s;">💖</span>
+  <span class="flotante" style="left:70%; animation-duration:9s;">❤️</span>
+  <span class="flotante" style="left:90%; animation-duration:10s;">⭐</span>
+
+  <!-- Música -->
+  <audio id="musica" src="rewrite-the-stars.mp3" autoplay></audio>
+
   <script>
-    const startBtn = document.getElementById('startBtn');
-    const contenido = document.getElementById('contenido');
+    const frases = document.querySelectorAll('.frase');
+    const musica = document.getElementById('musica');
 
-    startBtn.addEventListener('click', () => {
-      contenido.classList.remove('hidden');
+    // Ocultar todas las frases al inicio
+    frases.forEach(frase => frase.style.opacity = 0);
 
-      const frases = contenido.querySelectorAll('.frase');
+    // Cuando la música empieza, mostrar todas las frases
+    musica.addEventListener('play', () => {
       frases.forEach((frase, i) => {
         setTimeout(() => {
           frase.classList.add('show');
-        }, i * 2000); // Muestra cada frase cada 2 segundos
+        }, i * 3000); // cada frase aparece cada 3 segundos
       });
-
-      startBtn.style.display = 'none'; // Oculta el botón
     });
   </script>
 
