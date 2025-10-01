@@ -15,9 +15,25 @@
     }
 
     h1 {
-      margin-top: 20%;
+      margin-top: 15%;
       font-size: 2.5em;
       text-shadow: 2px 2px 5px #000;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 15px;
+      background: #ff4081;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+      margin-top: 30px;
+    }
+    button:hover {
+      transform: scale(1.1);
     }
 
     .frase {
@@ -47,6 +63,7 @@
 <body>
 
   <h1>💖 Para Miguel 💖</h1>
+  <button id="startBtn">Abrir sorpresa 🎁</button>
 
   <div id="contenido">
     <p class="frase">Y cuando vi tu sonrisa lo supe, esa era la sonrisa que quería ver siempre al despertar durante el resto de mi vida.</p>
@@ -56,7 +73,7 @@
     <p class="frase">Contigo, cada día es una aventura llena de risas y amor.</p>
   </div>
 
-  <!-- Elementos flotantes -->
+  <!-- Corazones y estrellas -->
   <span class="flotante" style="left:10%; animation-duration:6s;">❤️</span>
   <span class="flotante" style="left:30%; animation-duration:8s;">⭐</span>
   <span class="flotante" style="left:50%; animation-duration:7s;">💖</span>
@@ -64,22 +81,30 @@
   <span class="flotante" style="left:90%; animation-duration:10s;">⭐</span>
 
   <!-- Música -->
-  <audio id="musica" src="rewrite-the-stars.mp3" autoplay></audio>
+  <audio id="musica" src="rewrite-the-stars.mp3"></audio>
 
   <script>
+    const startBtn = document.getElementById('startBtn');
     const frases = document.querySelectorAll('.frase');
     const musica = document.getElementById('musica');
 
-    // Ocultar todas las frases al inicio
+    // Ocultar frases al inicio
     frases.forEach(frase => frase.style.opacity = 0);
 
-    // Cuando la música empieza, mostrar todas las frases
-    musica.addEventListener('play', () => {
+    // Acción al presionar el botón
+    startBtn.addEventListener('click', () => {
+      // Reproducir música
+      musica.play();
+
+      // Mostrar frases una a una
       frases.forEach((frase, i) => {
         setTimeout(() => {
           frase.classList.add('show');
         }, i * 3000); // cada frase aparece cada 3 segundos
       });
+
+      // Ocultar botón
+      startBtn.style.display = 'none';
     });
   </script>
 
