@@ -81,4 +81,26 @@
   <div id="contenido" class="hidden">
     <p class="frase">Y cuando vi tu sonrisa lo supe, esa era la sonrisa que quería ver siempre al despertar durante el resto de mi vida.</p>
     <p class="frase">Te quiero para volvernos locos de risa, ebrios de nada y pasear por las calles, eso sí, tomados de la mano, mejor dicho, del corazón.</p>
-    <p class="frase">Cinco minutos bastan
+    <p class="frase">Cinco minutos bastan para que tu amor me haga sonreír como nunca.</p>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const contenido = document.getElementById('contenido');
+
+    startBtn.addEventListener('click', () => {
+      contenido.classList.remove('hidden');
+
+      const frases = contenido.querySelectorAll('.frase');
+      frases.forEach((frase, i) => {
+        setTimeout(() => {
+          frase.classList.add('show');
+        }, i * 2000); // Muestra cada frase cada 2 segundos
+      });
+
+      startBtn.style.display = 'none'; // Oculta el botón
+    });
+  </script>
+
+</body>
+</html>
